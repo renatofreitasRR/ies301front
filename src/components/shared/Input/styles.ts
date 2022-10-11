@@ -17,11 +17,25 @@ export const InputContainer = styled.input`
 
     padding-left: 16px;
 
+
     :focus{
         outline-color: ${props => props.theme.colors.primary};
     }
-    
-    `;
+  
+`;
+
+export const InputContent = styled.div`
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    svg{
+        position: absolute;
+        right: 16px;
+        color: ${props => props.theme.colors.text};
+    }
+`;
 
 export const Label = styled.label`
     font-weight: 700;

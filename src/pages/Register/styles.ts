@@ -29,21 +29,25 @@ export const RegisterContainer = styled.section`
     justify-content: center;
 `;
 
-export const Back = styled.button`
-    width: 100px;
+export const Back = styled.a`
+    a{
+        width: 100px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-    border: none;
-    background-color: transparent;
+        border: none;
+        background-color: transparent;
 
-    margin-bottom: 16px;
-    color: ${props => props.theme.colors.secondary};
+        margin-bottom: 16px;
+        color: ${props => props.theme.colors.secondary};
 
-    font-size: ${props => props.theme.sizes.text};
-    font-weight: 700;
+        font-size: ${props => props.theme.sizes.text};
+        font-weight: 700;
+
+        text-decoration: none;
+    }
 
     svg{
         margin-right: 8px;
@@ -113,9 +117,13 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const LoginContent = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+   
+
+    a{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
     margin-top: 16px;
 

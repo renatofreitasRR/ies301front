@@ -29,7 +29,7 @@ export function Login() {
                         <Button title='Entrar' />
                         <RegisterContent>
                             <small>Não possui conta?</small>
-                            <a href="/register">Cadastre-se</a>
+                            <Link to="/register">Cadastre-se</Link>
                         </RegisterContent>
                     </div>
                 </Form>

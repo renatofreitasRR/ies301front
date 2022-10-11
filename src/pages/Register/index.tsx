@@ -17,6 +17,7 @@ import {
     Back,
     SplashArt
 } from './styles';
+import { Link } from 'react-router-dom';
 
 export function Register() {
     return (
@@ -65,9 +66,11 @@ export function Register() {
                     </UserRegister> */}
 
                     <CompanyRegister>
-                         <Back>
-                            <BiArrowBack />
-                            Voltar
+                        <Back>
+                            <Link to='/'>
+                                <BiArrowBack />
+                                Voltar
+                            </Link>
                         </Back>
                         <Title>Cadastro</Title>
                         <SubTitle>
@@ -89,13 +92,15 @@ export function Register() {
                             <Input title='Nome do usuário' />
                             <Input title='CNPJ' />
                         </InputContainer>
-                       
+
                         <Button title='Prosseguir' />
                     </CompanyRegister>
 
                     <LoginContent>
-                        <small>Já possui conta?</small>
-                        <a href="/login">Faça Login</a>
+                        <Link to='/'>
+                            <small>Já possui conta?</small>
+                            <a href="/login">Faça Login</a>
+                        </Link>
                     </LoginContent>
                 </Form>
             </RegisterContainer>
