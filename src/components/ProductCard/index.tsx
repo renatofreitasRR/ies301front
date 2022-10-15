@@ -3,8 +3,11 @@ import {
     Container,
     Photo,
     Content,
-    DateText
+    DateText,
+    TrashContent
 } from "./styles";
+
+import { FaTrash } from 'react-icons/fa'
 
 interface ProductCardProps {
     title: string;
@@ -19,19 +22,24 @@ export function ProductCard({ title, date, price, link, imgSrc }: ProductCardPro
     return (
         <Container>
             <Photo>
-                <img src='https://product-hub-prd.madeiramadeira.com.br/4413436/images/17056c7e-bd7b-4ac2-a81b-6f2e7a16ce754413436sofa1.jpg' />
+                <img src={imgSrc} />
             </Photo>
             <Content>
                 <DateText>
-                    <small>17/12/2022 12:01</small>
+                    <small>{date}</small>
                 </DateText>
 
                 <div>
-                    <SubTitle>Sofá Retrátil Bege</SubTitle>
+                    <SubTitle>{title}</SubTitle>
                     <span>
-                        R$ <strong>2.500,00</strong>
+                        R$ <strong>{price}</strong>
                     </span>
                 </div>
+
+
+                <TrashContent>
+                    <FaTrash size={35} />
+                </TrashContent>
             </Content>
         </Container>
     );

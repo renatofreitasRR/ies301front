@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.main`
     width: 350px;
+    min-width: 350px;
     height: 450px;
 
     background-color: ${props => props.theme.colors.white};
@@ -11,6 +12,8 @@ export const Container = styled.main`
     -webkit-box-shadow: -1px 7px 21px 0px rgba(0,0,0,0.23);
     -moz-box-shadow: -1px 7px 21px 0px rgba(0,0,0,0.23);
     box-shadow: -1px 7px 21px 0px rgba(0,0,0,0.23);
+
+    position: relative;
 `;
 
 export const Photo = styled.div`
@@ -59,6 +62,21 @@ export const DateText = styled.div`
         line-height: 12px;
         margin-top: 16px;
         white-space: nowrap;
+    }
+`;
+
+export const TrashContent = styled.div`
+    display: flex;
+    justify-content: end;
+
+    position: absolute;
+    bottom: 24px;
+    right: 32px;
+
+    height: 1fr;
+
+    svg{
+        color: ${props => props.theme.colors.secondary};
     }
 `;
 

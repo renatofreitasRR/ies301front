@@ -1,13 +1,14 @@
 import styled, { css } from 'styled-components';
 
 export const Item = styled.div`
-    height: ${props => props.theme.sizes.formComponentHeight};
     width: 100%;
 
     cursor: pointer;
 
     font-size: ${props => props.theme.sizes.subTitle};
     font-weight: 700;
+
+    border-bottom: 4px solid transparent;
 
     a{
         display: flex;
@@ -25,6 +26,10 @@ export const Item = styled.div`
             color: ${props => props.theme.colors.secondary};
             margin-bottom: 16px;
         }
+    }
+
+    :hover{
+        border-bottom: 4px solid ${props => props.theme.colors.secondary};
     }
 
 `;

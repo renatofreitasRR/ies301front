@@ -12,7 +12,7 @@ export function NavItem({ title, to, Icon }: NavItemProps) {
     return (
         <Item>
             <Link to={to}>
-                <Icon />
+                <Icon size={30} />
                 {title}
             </Link >
         </Item>

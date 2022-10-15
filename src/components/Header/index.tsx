@@ -1,6 +1,9 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
+import { FaCouch } from "react-icons/fa";
 import { MdFilterVintage } from "react-icons/md";
+import { BiCloset } from "react-icons/bi";
+import { HiDesktopComputer } from "react-icons/hi";
 import { HeaderButton } from "../HeaderButton";
 import { NavItem } from "../NavItem";
 import { Input } from "../shared/Input";
@@ -34,9 +37,9 @@ export function MainHeader() {
             </TopBar>
             <NavBar>
                 <Filters>
-                    <NavItem title='Eletrônicos' to='ofertas' Icon={MdFilterVintage} />
-                    <NavItem title='Vestuário' to='produtos' Icon={MdFilterVintage} />
-                    <NavItem title='Casa e Cozinha' to='produtos' Icon={MdFilterVintage} />
+                    <NavItem title='Eletrônicos' to='ofertas' Icon={HiDesktopComputer} />
+                    <NavItem title='Vestuário' to='produtos' Icon={BiCloset} />
+                    <NavItem title='Casa e Cozinha' to='produtos' Icon={FaCouch} />
                 </Filters>
                 <Pages>
                     <HeaderButton title='Minhas Ofertas' to='ofertas' Icon={MdFilterVintage} />
