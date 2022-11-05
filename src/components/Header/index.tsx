@@ -1,7 +1,7 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
 import { FaCouch } from "react-icons/fa";
-import { MdFilterVintage } from "react-icons/md";
+import { MdFilterVintage, MdLogout } from "react-icons/md";
 import { BiCloset } from "react-icons/bi";
 import { HiDesktopComputer } from "react-icons/hi";
 import { GiMeal } from "react-icons/gi";
@@ -10,17 +10,28 @@ import { HeaderButton } from "../HeaderButton";
 import { NavItem } from "../NavItem";
 import { Input } from "../shared/Input";
 import {
-Header,
-TopBar,
-IconBar,
-SearchBar,
-UserBar,
-NavBar,
-Pages,
-Filters
+    Header,
+    TopBar,
+    IconBar,
+    SearchBar,
+    UserBar,
+    NavBar,
+    Pages,
+    Filters
 } from "./styles";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export function MainHeader() {
+    const { signOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    function handleLogOut(){
+        signOut();
+        navigate('/');
+    }
+
     return (
         <Header>
             <TopBar>
@@ -32,9 +43,10 @@ export function MainHeader() {
                     {/* <Input title='Pesquisar' hasLabel={false} Icon={AiOutlineSearch} placeholder='Pesquisar' /> */}
                 </SearchBar>
                 <UserBar>
-                    <div>
+                    <div onClick={() => navigate('/profile')}>
                         <FiUser size={30} />
                     </div>
+                    <MdLogout size={30} title='Deslogar' onClick={handleLogOut} />
                 </UserBar>
             </TopBar>
             <NavBar>

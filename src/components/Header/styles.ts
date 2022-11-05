@@ -32,6 +32,9 @@ export const SearchBar = styled.div`
 export const UserBar = styled.div`
     cursor: pointer;
 
+    display: flex;
+    align-items: center;
+
     div{
         display: flex;
         align-items: center;
@@ -40,6 +43,11 @@ export const UserBar = styled.div`
         width: 70px;
         height: 70px;
         background-color: ${props => props.theme.colors.primary};
+
+        svg{
+            color: ${props => props.theme.colors.white};
+        }
+        margin-right: 18px;
     }
 
     svg{
@@ -70,6 +78,13 @@ export const NavBar = styled.nav`
     justify-content: space-between;
 
     white-space: nowrap;
+
+
+    @media screen and (max-width: 1035px){
+       flex-direction: column;
+       height: 220px;
+       justify-content: center;
+    }
 `;
 
 export const Pages = styled.div`
@@ -83,6 +98,32 @@ export const Pages = styled.div`
         }
     }
 
+    @media screen and (max-width: 1035px){
+       align-items: center;
+       margin-top: 16px;
+
+        button{
+            :not(:first-child){
+                margin-left: 32px;
+            }
+        }
+
+        margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: 703px){
+       flex-direction: column;
+       align-items: center;
+
+        button{
+            :not(:first-child){
+                margin-left: 0px;
+                margin-top: 10px;
+            }
+        }
+
+        margin-bottom: 20px;
+    }
 `;
 
 export const Filters = styled.div`

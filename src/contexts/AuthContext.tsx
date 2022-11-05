@@ -24,6 +24,7 @@ type AuthContextData = {
 interface UserProps {
     idUsuario: number;
     nomeUsuario: string;
+    telefone: string;
     email: string;
 }
 
