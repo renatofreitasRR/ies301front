@@ -1,17 +1,25 @@
+import { ToastContainer } from "react-toastify";
 import { ThemeProvider } from "styled-components";
-import { Button } from "./components/shared/Button";
-import { Input } from "./components/shared/Input";
-import { Login } from "./pages/Login";
-import { Register } from "./pages/Register";
 import { AppRoutes } from "./routes/index.routes";
 import { GlobalStyle } from "./styles/global";
 import { defaultTheme } from "./styles/themes/default";
+import React from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import { AuthProvider } from "./contexts/AuthContext";
 
 export function App() {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <AppRoutes />
-      <GlobalStyle />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={defaultTheme}>
+        <AppRoutes />
+        <GlobalStyle />
+      </ThemeProvider>
+
+      <ToastContainer
+        theme='colored'
+        position='top-right'
+        closeOnClick
+      />
+    </AuthProvider>
   )
 }

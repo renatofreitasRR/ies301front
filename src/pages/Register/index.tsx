@@ -17,85 +17,121 @@ import {
     Back,
     SplashArt
 } from './styles';
-import { Link } from 'react-router-dom';
+
+import * as Yup from 'yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
+const schema = Yup.object().shape({
+    email: Yup
+        .string()
+        .email('Formato de email incorreto')
+        .required('O campo email é obrigatório'),
+
+    password: Yup
+        .string()
+        .required('O campo senha é obrigatório'),
+});
 
 export function Register() {
+    const { handleSubmit, register, formState: { errors } } = useForm<any>({ resolver: yupResolver(schema) });
+    const [componentToShow, setComponentToShow] = useState('register');
+
+    const navigate = useNavigate();
+
+    async function handleSubmitCPFForm(data: any) {
+
+    }
+
+    async function handleSubmitCNPJForm(data: any) {
+
+    }
+
+
     return (
         <Container>
             <SplashArt>
                 <img src={Splash} alt="Mulher com carrinho de compras saindo de um celular, uma representação de uma compra online" />
             </SplashArt>
             <RegisterContainer>
-                <Form>
-                    {/* <Choises>
-                        <div>
-                        <Title>Cadastro</Title>
-                        <SubTitle>
-                        Nos conte em qual das duas opções você se encaixa!
-                        </SubTitle>
-                        </div>
-                        <ButtonsContainer>
-                        <Button title='Pessoa Física' />
-                            <small>ou</small>
-                            <Button title='Pessoa Jurídica' />
-                        </ButtonsContainer>
-                    </Choises> */}
+                <Form onSubmit={componentToShow === 'cpfPage' ? handleSubmit(handleSubmitCPFForm) : handleSubmit(handleSubmitCNPJForm)}>
+                    {componentToShow === 'register' && (
+                        <Choises>
+                            <div>
+                                <Title>Cadastro</Title>
+                                <SubTitle>
+                                    Nos conte em qual das duas opções você se encaixa!
+                                </SubTitle>
+                            </div>
+                            <ButtonsContainer>
+                                <Button title='Pessoa Física' type='button' onClick={() => setComponentToShow('cpfPage')} />
+                                <small>ou</small>
+                                <Button title='Pessoa Jurídica' type='button' onClick={() => setComponentToShow('cnpjPage')} />
+                            </ButtonsContainer>
+                        </Choises>
+                    )}
 
-                    {/* <UserRegister>
-                        <Back>
-                            <BiArrowBack />
-                            Voltar
-                        </Back>
-                        <Title>Cadastro</Title>
-                        <SubTitle>
-                            Preencha todos os campos para continuar o cadastro!
-                        </SubTitle>
-                        <InputContainer>
-                            <Input title='Nome' />
-                            <Input title='Telefone' />
-                        </InputContainer>
-                        <InputContainer>
-                            <Input title='E-mail' />
-                            <Input title='Nome do usuário' />
-                        </InputContainer>
-                        <InputContainer>
-                            <Input title='Senha' />
-                            <Input title='CPF' />
-                        </InputContainer>
-                        <Button title='Prosseguir' />
-                    </UserRegister> */}
+                    {componentToShow === 'cpfPage' && (
+                        <UserRegister>
+                            <Back onClick={() => setComponentToShow('register')}>
+                                <Link to='/register'>
+                                    <BiArrowBack />
+                                    Voltar
+                                </Link>
+                            </Back>
+                            <Title>Cadastro</Title>
+                            <SubTitle>
+                                Preencha todos os campos para continuar o cadastro!
+                            </SubTitle>
+                            <InputContainer>
+                                <Input title='Nome' inputName='name' register={register} />
+                                <Input title='Telefone' inputName='name' register={register} />
+                            </InputContainer>
+                            <InputContainer>
+                                <Input title='E-mail' inputName='name' register={register} />
+                                <Input title='Nome do usuário' inputName='name' register={register} />
+                            </InputContainer>
+                            <InputContainer>
+                                <Input title='Senha' inputName='name' register={register} />
+                                <Input title='CPF' inputName='name' register={register} />
+                            </InputContainer>
+                            <Button title='Prosseguir' />
+                        </UserRegister>
+                    )}
 
-                    <CompanyRegister>
-                        <Back>
-                            <Link to='/'>
-                                <BiArrowBack />
-                                Voltar
-                            </Link>
-                        </Back>
-                        <Title>Cadastro</Title>
-                        <SubTitle>
-                            Preencha todos os campos para continuar o cadastro!
-                        </SubTitle>
-                        <InputContainer>
-                            <Input title='Nome' />
-                            <Input title='Telefone' />
-                        </InputContainer>
-                        <InputContainer>
-                            <Input title='E-mail' />
-                            <Input title='Senha' />
-                        </InputContainer>
-                        <InputContainer>
-                            <Input title='Nome da empresa' />
-                            <Input title='Email da empresa' />
-                        </InputContainer>
-                        <InputContainer>
-                            <Input title='Nome do usuário' />
-                            <Input title='CNPJ' />
-                        </InputContainer>
-
-                        <Button title='Prosseguir' />
-                    </CompanyRegister>
-
+                    {componentToShow === 'cnpjPage' && (
+                        <CompanyRegister>
+                            <Back onClick={() => setComponentToShow('register')}>
+                                <Link to='/register'>
+                                    <BiArrowBack />
+                                    Voltar
+                                </Link>
+                            </Back>
+                            <Title>Cadastro</Title>
+                            <SubTitle>
+                                Preencha todos os campos para continuar o cadastro!
+                            </SubTitle>
+                            <InputContainer>
+                                <Input title='Nome' inputName='name' register={register} />
+                                <Input title='Telefone' inputName='name' register={register} />
+                            </InputContainer>
+                            <InputContainer>
+                                <Input title='E-mail' inputName='name' register={register} />
+                                <Input title='Senha' inputName='name' register={register} />
+                            </InputContainer>
+                            <InputContainer>
+                                <Input title='Nome da empresa' inputName='name' register={register} />
+                                <Input title='Email da empresa' inputName='name' register={register} />
+                            </InputContainer>
+                            <InputContainer>
+                                <Input title='Nome do usuário' inputName='name' register={register} />
+                                <Input title='CNPJ' inputName='name' register={register} />
+                            </InputContainer>
+                            <Button title='Prosseguir' />
+                        </CompanyRegister>
+                    )}
                     <LoginContent>
                         <Link to='/'>
                             <small>Já possui conta?</small>

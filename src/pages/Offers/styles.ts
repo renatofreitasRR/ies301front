@@ -26,6 +26,24 @@ export const ListTitle = styled.h2`
     font-size: ${props => props.theme.sizes.title};
     font-weight: 700;
     margin-left: 12px;
-    margin-top: 24px;
 `;
 
+export const BackHome = styled.div`
+    color: ${props => props.theme.colors.secondary};
+    font-weight: 700;
+    margin-bottom: 24px;
+
+    a{
+        color: ${props => props.theme.colors.secondary};
+        display: flex;
+        align-items: center;
+
+        text-decoration: none;
+    }
+
+    span{
+        color: ${props => props.theme.colors.secondary};
+        font-size: ${props => props.theme.sizes.subTitle};
+        margin-left: 8px;
+    }
+`;

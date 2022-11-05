@@ -86,6 +86,15 @@ export const InputContainer = styled.section`
     div:first-child{
         margin-right: 16px;
     }
+
+
+    @media screen and (max-width: 703px){
+        flex-direction: column;
+
+        div:first-child{
+            margin-right: 0px;
+        }
+    }
 `;
 
 export const Form = styled.form`

@@ -46,3 +46,18 @@ export const Label = styled.label`
     display: block;
     margin-bottom: 16px;
 `;
+
+
+export const Error = styled.span`
+    font-weight: 700;
+    font-size: 20px;
+
+    color: ${props => props.theme.colors.error};
+
+    display: block;
+    margin-bottom: 16px;
+`;
+
+export const Content = styled.div`
+    width: 100%;
+`;

@@ -4,6 +4,8 @@ import { FaCouch } from "react-icons/fa";
 import { MdFilterVintage } from "react-icons/md";
 import { BiCloset } from "react-icons/bi";
 import { HiDesktopComputer } from "react-icons/hi";
+import { GiMeal } from "react-icons/gi";
+
 import { HeaderButton } from "../HeaderButton";
 import { NavItem } from "../NavItem";
 import { Input } from "../shared/Input";
@@ -27,7 +29,7 @@ export function MainHeader() {
                     <h1>Promo Ofertas</h1>
                 </IconBar>
                 <SearchBar>
-                    <Input title='Pesquisar' hasLabel={false} Icon={AiOutlineSearch} placeholder='Pesquisar' />
+                    {/* <Input title='Pesquisar' hasLabel={false} Icon={AiOutlineSearch} placeholder='Pesquisar' /> */}
                 </SearchBar>
                 <UserBar>
                     <div>
@@ -37,13 +39,13 @@ export function MainHeader() {
             </TopBar>
             <NavBar>
                 <Filters>
-                    <NavItem title='Eletrônicos' to='ofertas' Icon={HiDesktopComputer} />
-                    <NavItem title='Vestuário' to='produtos' Icon={BiCloset} />
-                    <NavItem title='Casa e Cozinha' to='produtos' Icon={FaCouch} />
+                    <NavItem title='Eletrônicos' to='home/1' Icon={HiDesktopComputer} />
+                    <NavItem title='Alimentos' to='home/2' Icon={GiMeal} />
+                    <NavItem title='Vestuário' to='home/3' Icon={BiCloset} />
                 </Filters>
                 <Pages>
-                    <HeaderButton title='Minhas Ofertas' to='ofertas' Icon={MdFilterVintage} />
-                    <HeaderButton title='Meus Produtos' to='produtos' Icon={MdFilterVintage} />
+                    <HeaderButton title='Minhas Ofertas' to='offers' Icon={MdFilterVintage} />
+                    <HeaderButton title='Meus Produtos' to='products' Icon={MdFilterVintage} />
                 </Pages>
             </NavBar>
         </Header>

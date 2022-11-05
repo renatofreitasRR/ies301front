@@ -1,6 +1,7 @@
+import { ButtonHTMLAttributes } from 'react';
 import { ButtonContainer, ButtonVariant } from './styles';
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     title: string;
     variant?: ButtonVariant;
 }
