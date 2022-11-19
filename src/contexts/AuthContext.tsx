@@ -41,6 +41,11 @@ export function AuthProvider({ children }: AuthProps) {
         const user = localStorage.getItem('@promo:user');
 
         if (token && user) {
+
+            api.defaults.headers = {
+                Authorization: `Bearer ${token}`,
+            } as CommonHeaderProperties;
+
             return { user: JSON.parse(user), token }
         }
 

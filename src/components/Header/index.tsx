@@ -2,7 +2,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
 import { FaCouch } from "react-icons/fa";
 import { MdFilterVintage, MdLogout } from "react-icons/md";
-import { BiCloset } from "react-icons/bi";
+import { BiCloset, BiCategoryAlt } from "react-icons/bi";
 import { HiDesktopComputer } from "react-icons/hi";
 import { GiMeal } from "react-icons/gi";
 
@@ -27,7 +27,7 @@ export function MainHeader() {
     const { signOut } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    function handleLogOut(){
+    function handleLogOut() {
         signOut();
         navigate('/');
     }
@@ -51,6 +51,7 @@ export function MainHeader() {
             </TopBar>
             <NavBar>
                 <Filters>
+                    <NavItem title='Todos' to='home' Icon={BiCategoryAlt} />
                     <NavItem title='Eletrônicos' to='home/1' Icon={HiDesktopComputer} />
                     <NavItem title='Alimentos' to='home/2' Icon={GiMeal} />
                     <NavItem title='Vestuário' to='home/3' Icon={BiCloset} />

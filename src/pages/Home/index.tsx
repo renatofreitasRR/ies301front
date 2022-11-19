@@ -31,9 +31,11 @@ export function Home() {
             }
             catch (err: any) {
                 console.log('ERROR', err);
-            }   
+            }
             finally {
-                setLoading(false);
+                setTimeout(() => {
+                    setLoading(false);
+                }, 1000)
             }
 
         }
@@ -49,6 +51,7 @@ export function Home() {
                 <ProductList>
                     {products.length > 0 ? products.map((product) => (
                         <ProductCardHome
+                            id={product.idProduto}
                             key={product.idProduto}
                             description={product.descricao}
                             date=''

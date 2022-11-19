@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.main`
-    width: 350px;
-    min-width: 350px;
-    height: 450px;
+    width: 100%;
+    height: 700px;
+    max-height: 70vh;
 
     background-color: ${props => props.theme.colors.white};
     border-radius: ${props => props.theme.sizes.borderRadius};
@@ -14,19 +14,18 @@ export const Container = styled.main`
     box-shadow: -1px 7px 21px 0px rgba(0,0,0,0.23);
 
     position: relative;
-
-    cursor: pointer;
 `;
 
 export const Photo = styled.div`
     background-color: ${props => props.theme.colors.secondary};
-    height: 192px;
+    height: 40%;
     border-radius: ${props => props.theme.sizes.borderRadius} ${props => props.theme.sizes.borderRadius} 48px 48px ;
 
     img{
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: scale-down;
+        object-position: center;
 
         border-radius: ${props => props.theme.sizes.borderRadius} ${props => props.theme.sizes.borderRadius} 48px 48px ;
     }

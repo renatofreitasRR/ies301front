@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ProductDescription } from "../pages/ProductDescription";
 import { AuthenticatedRoute } from "../Layouts/AuthenticatedRoute";
 import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
@@ -21,6 +22,7 @@ export function AppRoutes() {
                     <Route path='/home' element={<Home />} />
                     <Route path='/offers' element={<Offers />} />
                     <Route path='/products' element={<Products />} />
+                    <Route path='/product/:id' element={<ProductDescription />} />
                     <Route path='/products/register' element={<RegisterProducts />} />
                 </Route>
             </Routes>

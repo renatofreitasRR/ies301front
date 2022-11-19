@@ -9,9 +9,11 @@ import {
 } from "./styles";
 
 import { AiFillHeart } from 'react-icons/ai'
+import { useNavigate } from "react-router-dom";
 
 
 interface ProductCardProps {
+    id: number;
     title: string;
     date: string;
     price: string;
@@ -21,9 +23,11 @@ interface ProductCardProps {
 }
 
 
-export function ProductCardHome({ title, date, description, price, link, imgSrc }: ProductCardProps) {
+export function ProductCardHome({ id, title, date, description, price, link, imgSrc }: ProductCardProps) {
+    const navigate = useNavigate();
+    
     return (
-        <Container>
+        <Container onClick={() => navigate(`/product/${id}`)}>
             <Photo>
                 <img src={imgSrc} />
             </Photo>

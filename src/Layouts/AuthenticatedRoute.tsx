@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import { Footer } from "../components/Footer";
 import { MainHeader } from "../components/Header";
 import {
     Container,
@@ -12,6 +13,7 @@ export function AuthenticatedRoute() {
             <Container>
                 <Outlet />
             </Container>
+            <Footer />
         </>
     );
 }

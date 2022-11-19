@@ -58,7 +58,9 @@ export function Login() {
             console.log('Login Error', err)
         }
         finally{
-            setLoading(false);
+            setTimeout(() => {
+                setLoading(false);
+            }, 1000)
         }
     }
 

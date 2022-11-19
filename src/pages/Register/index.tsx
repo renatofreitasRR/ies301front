@@ -24,19 +24,108 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-const schema = Yup.object().shape({
+interface CPFRegisterProps{
+    email: string;
+    name: string;
+    cpf: string;
+    cellphone: string;
+    password: string;
+    confirmPassword: string;
+}
+
+interface CNPJRegisterProps{
+    email: string;
+    name: string;
+    cnpj: string;
+    cellphone: string;
+    password: string;
+    confirmPassword: string;
+    companyName: string;
+    userCompanyEmail: string;
+}
+
+
+
+const cpfRegisterSchema = Yup.object().shape({
     email: Yup
         .string()
-        .email('Formato de email incorreto')
-        .required('O campo email é obrigatório'),
+        .email('Formato de Email incorreto')
+        .required('O campo Email é obrigatório'),
+
+    name: Yup
+        .string()
+        .required('O campo Nome é obrigatório')
+        .min(3, 'Digite no mínimo 3 caracteres')
+        .max(100, 'Máximo de 100 caracteres atingido'),
+
+    cpf: Yup
+        .string()
+        .required('O campo CPF é obrigatório'),
+
+    cellphone: Yup
+        .string()
+        .required('O campo Telefone é obrigatório'),
 
     password: Yup
         .string()
-        .required('O campo senha é obrigatório'),
+        .required('O campo Senha é obrigatório'),
+
+    confirmPassword: Yup
+        .string()
+        .required('O campo Confirmação de Senha é obrigatório')
+        .oneOf([Yup.ref('password'), null], 'As senhas não coincidem'),
+});
+
+const cnpjRegisterSchema = Yup.object().shape({
+    email: Yup
+        .string()
+        .email('Formato de Email incorreto')
+        .required('O campo Email é obrigatório'),
+
+    name: Yup
+        .string()
+        .required('O campo Nome é obrigatório')
+        .min(3, 'Digite no mínimo 3 caracteres')
+        .max(100, 'Máximo de 100 caracteres atingido'),
+
+    profileName: Yup
+        .string()
+        .required('O campo email é obrigatório')
+        .min(3, 'Digite no mínimo 3 caracteres')
+        .max(100, 'Máximo de 100 caracteres atingido'),
+
+    cnpj: Yup
+        .string()
+        .required('O campo CNPJ é obrigatório'),
+
+    cellphone: Yup
+        .string()
+        .required('O campo Telefone é obrigatório'),
+
+    companyName: Yup
+        .string()
+        .required('O campo Nome da Empresa é obrigatório'),
+
+    userCompanyEmail: Yup
+        .string()
+        .required('O campo Email Empresarial é obrigatório'),
+
+    password: Yup
+        .string()
+        .required('O campo Senha é obrigatório'),
+
+    confirmPassword: Yup
+        .string()
+        .required('O campo Confirmação de Senha é obrigatório')
+        .oneOf([Yup.ref('password'), null], 'As senhas não coincidem'),
 });
 
 export function Register() {
-    const { handleSubmit, register, formState: { errors } } = useForm<any>({ resolver: yupResolver(schema) });
+    const { handleSubmit, register, formState: { errors } } = useForm<CPFRegisterProps>({ resolver: yupResolver(cpfRegisterSchema) });
+
+    const { handleSubmit: handleSubmitCnpj, register: registerCnpj, formState: { errors: errorsCnpj } } = useForm<CNPJRegisterProps>({ resolver: yupResolver(cnpjRegisterSchema) });
+
+
     const [componentToShow, setComponentToShow] = useState('register');
 
     const navigate = useNavigate();
@@ -56,7 +145,7 @@ export function Register() {
                 <img src={Splash} alt="Mulher com carrinho de compras saindo de um celular, uma representação de uma compra online" />
             </SplashArt>
             <RegisterContainer>
-                <Form onSubmit={componentToShow === 'cpfPage' ? handleSubmit(handleSubmitCPFForm) : handleSubmit(handleSubmitCNPJForm)}>
+                <Form onSubmit={componentToShow === 'cpfPage' ? handleSubmit(handleSubmitCPFForm) : handleSubmitCnpj(handleSubmitCNPJForm)}>
                     {componentToShow === 'register' && (
                         <Choises>
                             <div>
@@ -86,16 +175,16 @@ export function Register() {
                                 Preencha todos os campos para continuar o cadastro!
                             </SubTitle>
                             <InputContainer>
-                                <Input title='Nome' inputName='name' register={register} />
-                                <Input title='Telefone' inputName='name' register={register} />
+                                <Input title='Nome' inputName='name' register={register} error={errors.name?.message} />
+                                <Input title='Telefone' inputName='cellphone' register={register}  error={errors.cellphone?.message} />
                             </InputContainer>
                             <InputContainer>
-                                <Input title='E-mail' inputName='name' register={register} />
-                                <Input title='Nome do usuário' inputName='name' register={register} />
+                                <Input title='E-mail' inputName='email' register={register}  error={errors.email?.message} />
+                                <Input title='CPF' inputName='cpf' register={register}  error={errors.cpf?.message} />
                             </InputContainer>
                             <InputContainer>
-                                <Input title='Senha' inputName='name' register={register} />
-                                <Input title='CPF' inputName='name' register={register} />
+                                <Input title='Senha' type='password' inputName='password' register={register}  error={errors.password?.message} />
+                                <Input title='Confirmação de Senha' type='password' inputName='confirmPassword' register={register}  error={errors.confirmPassword?.message} />
                             </InputContainer>
                             <Button title='Prosseguir' />
                         </UserRegister>
@@ -114,20 +203,20 @@ export function Register() {
                                 Preencha todos os campos para continuar o cadastro!
                             </SubTitle>
                             <InputContainer>
-                                <Input title='Nome' inputName='name' register={register} />
-                                <Input title='Telefone' inputName='name' register={register} />
+                                <Input title='Nome' inputName='name' register={registerCnpj} error={errorsCnpj.name?.message} />
+                                <Input title='Telefone' inputName='cellphone' register={registerCnpj} error={errorsCnpj.cellphone?.message} />
                             </InputContainer>
                             <InputContainer>
-                                <Input title='E-mail' inputName='name' register={register} />
-                                <Input title='Senha' inputName='name' register={register} />
+                                <Input title='E-mail Pessoal' inputName='email' register={registerCnpj} error={errorsCnpj.email?.message} />
+                                <Input title='CNPJ' inputName='cnpj' register={registerCnpj} error={errorsCnpj.cnpj?.message} />
                             </InputContainer>
                             <InputContainer>
-                                <Input title='Nome da empresa' inputName='name' register={register} />
-                                <Input title='Email da empresa' inputName='name' register={register} />
+                                <Input title='Nome da Empresa' inputName='companyName' register={registerCnpj} error={errorsCnpj.companyName?.message} />
+                                <Input title='Email Empresarial' inputName='userCompanyEmail' register={registerCnpj} error={errorsCnpj.userCompanyEmail?.message} />
                             </InputContainer>
                             <InputContainer>
-                                <Input title='Nome do usuário' inputName='name' register={register} />
-                                <Input title='CNPJ' inputName='name' register={register} />
+                                <Input title='Senha' type='password' inputName='password' register={registerCnpj} error={errorsCnpj.password?.message} />
+                                <Input title='Confirmação de Senha' type='password' inputName='confirmPassword' register={registerCnpj} error={errorsCnpj.confirmPassword?.message} />
                             </InputContainer>
                             <Button title='Prosseguir' />
                         </CompanyRegister>
