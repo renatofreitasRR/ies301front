@@ -8,6 +8,7 @@ import { Products } from "../pages/Products";
 import { Profile } from "../pages/Profile";
 import { Register } from "../pages/Register";
 import { RegisterProducts } from "../pages/RegisterProducts";
+import { Users } from "../pages/Users";
 
 
 export function AppRoutes() {
@@ -17,6 +18,7 @@ export function AppRoutes() {
                 <Route path='/' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/' element={<AuthenticatedRoute />}>
+                    <Route path='/users' element={<Users />} />
                     <Route path='/profile' element={<Profile />} />
                     <Route path='/home/:type' element={<Home />} />
                     <Route path='/home' element={<Home />} />

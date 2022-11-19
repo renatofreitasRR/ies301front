@@ -47,11 +47,24 @@ export const UserBar = styled.div`
         svg{
             color: ${props => props.theme.colors.white};
         }
+
         margin-right: 18px;
+
+        transition: 0.2s;
+
+        :hover{
+            transform: scale(1.05);
+        }
     }
 
     svg{
         color: ${props => props.theme.colors.white};
+
+        transition: 0.2s;
+
+        :hover{
+            transform: scale(1.05);
+        }
     }
 `;
 

@@ -1,7 +1,7 @@
-import { AiOutlineSearch } from "react-icons/ai";
-import { FiUser } from "react-icons/fi";
+import { AiOutlineArrowDown, AiOutlineSearch } from "react-icons/ai";
+import { FiUser, FiUsers } from "react-icons/fi";
 import { FaCouch } from "react-icons/fa";
-import { MdFilterVintage, MdLogout } from "react-icons/md";
+import { MdFilterVintage, MdKeyboardArrowDown, MdLogout } from "react-icons/md";
 import { BiCloset, BiCategoryAlt } from "react-icons/bi";
 import { HiDesktopComputer } from "react-icons/hi";
 import { GiMeal } from "react-icons/gi";
@@ -22,6 +22,7 @@ import {
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { Can } from "../Permissions";
 
 export function MainHeader() {
     const { signOut } = useContext(AuthContext);
@@ -42,7 +43,12 @@ export function MainHeader() {
                 <SearchBar>
                     {/* <Input title='Pesquisar' hasLabel={false} Icon={AiOutlineSearch} placeholder='Pesquisar' /> */}
                 </SearchBar>
-                <UserBar>
+                <UserBar title='Todos os usuários'>
+                    <div onClick={() => navigate('/users')}>
+                        <FiUsers size={30} />
+                    </div>
+                </UserBar>
+                <UserBar title='Meu usuário'>
                     <div onClick={() => navigate('/profile')}>
                         <FiUser size={30} />
                     </div>
@@ -58,7 +64,9 @@ export function MainHeader() {
                 </Filters>
                 <Pages>
                     <HeaderButton title='Minhas Ofertas' to='offers' Icon={MdFilterVintage} />
-                    <HeaderButton title='Meus Produtos' to='products' Icon={MdFilterVintage} />
+                    <Can rolesCan={[2]}>
+                        <HeaderButton title='Meus Produtos' to='products' Icon={MdFilterVintage} />
+                    </Can>
                 </Pages>
             </NavBar>
         </Header>

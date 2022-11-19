@@ -15,6 +15,12 @@ export const Button = styled.button`
 
     background-color: ${props => props.theme.colors.white};
 
+    transition: 0.2s;
+
+    :hover{
+        transform: scale(1.05);
+    }
+
 
     a{
         display: flex;

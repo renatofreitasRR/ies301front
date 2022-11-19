@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.main`
-    width: 350px;
-    min-width: 350px;
-    height: 450px;
+    width: 100%;
+    height: 200px;
 
     background-color: ${props => props.theme.colors.white};
     border-radius: ${props => props.theme.sizes.borderRadius};
@@ -15,28 +14,22 @@ export const Container = styled.main`
 
     position: relative;
 
-    cursor: pointer;
-
-    transition: 0.2s;
-
-    :hover{
-        transform: scale(1.01);
-    }
+    margin-bottom: 25px;
 `;
 
-export const Photo = styled.div`
-    background-color: ${props => props.theme.colors.secondary};
-    height: 192px;
-    border-radius: ${props => props.theme.sizes.borderRadius} ${props => props.theme.sizes.borderRadius} 48px 48px ;
+export const RoleContainer = styled.div`
+    display: flex;
+    align-items: center;
 
-    img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    color: ${props => props.theme.colors.secondary};
 
-        border-radius: ${props => props.theme.sizes.borderRadius} ${props => props.theme.sizes.borderRadius} 48px 48px ;
+    font-size: ${props => props.theme.sizes.subTitle};
+
+    margin-top: 16px;
+
+    svg{
+        margin-right: 16px;
     }
-
 `;
 
 export const Content = styled.div`
@@ -86,14 +79,6 @@ export const TrashContent = styled.div`
     svg{
         color: ${props => props.theme.colors.secondary};
     }
-`;
-
-
-export const Description = styled.p`
-    margin-top: 12px;
-
-    color: ${props => props.theme.colors.text};
-    font-size: ${props => props.theme.sizes.text};
 `;
 
 

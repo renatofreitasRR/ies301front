@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ProductCardHome } from '../../components/ProductCardHome';
 import { Loader } from '../../components/shared/Loader';
-import { AuthContext } from '../../contexts/AuthContext';
 import { ProductProps } from '../../models/productProps';
 import { api } from '../../services/api';
 import {
@@ -26,7 +25,7 @@ export function Home() {
                 const data = await response.data;
 
                 if (response.status === 200) {
-                    setProducts(response.data);
+                    setProducts(data);
                 }
             }
             catch (err: any) {

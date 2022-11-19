@@ -26,6 +26,7 @@ interface UserProps {
     nomeUsuario: string;
     telefone: string;
     email: string;
+    idTipoUsuario: number;
 }
 
 interface AuthState {
@@ -55,7 +56,6 @@ export function AuthProvider({ children }: AuthProps) {
     const isAuthenticated = !!data?.user;
 
     async function signIn({ email, password }: SignInCredentials) {
-        console.log('EMAIL', email);
         try {
             const response = await api.post("/login", { email: email, senha: password });
 
