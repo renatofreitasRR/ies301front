@@ -75,15 +75,20 @@ export const DateText = styled.div`
 
 export const TrashContent = styled.div`
     display: flex;
-    justify-content: end;
+    align-items: center;
 
-    position: absolute;
-    bottom: 24px;
-    right: 32px;
+    margin-top: 16px;
+
+    font-size: ${props => props.theme.sizes.text};
 
     height: 1fr;
 
     svg{
+        color: ${props => props.theme.colors.secondary};
+    }
+
+    strong{
+        margin-right: 8px;
         color: ${props => props.theme.colors.secondary};
     }
 `;

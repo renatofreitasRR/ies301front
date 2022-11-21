@@ -12,9 +12,6 @@ export function useCan({ rolesCan = [] }: UseCanParams) {
         return false;
     }
 
-    console.log('Tipo usuario', user?.idTipoUsuario);
-    console.log('Tipo usuario == 1', user?.idTipoUsuario == 1);
-
     if (user?.idTipoUsuario == 1)
         return true
 

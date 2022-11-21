@@ -11,8 +11,6 @@ export function Can({ children, rolesCan = [] }: CanProps) {
         rolesCan,
     });
 
-    console.log('Roles Can', rolesCan);
-    console.log('TRUE OR FALSE', userCanSeeComponent);
 
     if (!userCanSeeComponent) {
         return null;

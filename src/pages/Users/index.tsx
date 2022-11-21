@@ -68,9 +68,6 @@ export function Users() {
                     )}
                 </ProductList>
             </Container>
-            <RegisterProductsButton title='Cadastrar Produto' onClick={() => navigate('/products/register')}>
-                <AiOutlinePlus size={40} />
-            </RegisterProductsButton>
         </>
 
     );

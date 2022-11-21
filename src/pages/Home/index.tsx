@@ -24,6 +24,9 @@ export function Home() {
                 const response = await api.get(url);
                 const data = await response.data;
 
+                console.log(data);
+
+
                 if (response.status === 200) {
                     setProducts(data);
                 }
@@ -50,6 +53,7 @@ export function Home() {
                 <ProductList>
                     {products.length > 0 ? products.map((product) => (
                         <ProductCardHome
+                            quantity={product.quantidade}
                             id={product.idProduto}
                             key={product.idProduto}
                             description={product.descricao}

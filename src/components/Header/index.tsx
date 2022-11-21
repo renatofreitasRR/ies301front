@@ -41,13 +41,15 @@ export function MainHeader() {
                     <h1>Promo Ofertas</h1>
                 </IconBar>
                 <SearchBar>
-                    {/* <Input title='Pesquisar' hasLabel={false} Icon={AiOutlineSearch} placeholder='Pesquisar' /> */}
+                    {/* <Input register={null} title='Pesquisar' hasLabel={false} Icon={AiOutlineSearch} placeholder='Pesquisar' /> */}
                 </SearchBar>
-                <UserBar title='Todos os usuários'>
-                    <div onClick={() => navigate('/users')}>
-                        <FiUsers size={30} />
-                    </div>
-                </UserBar>
+                <Can rolesCan={[1]}>
+                    <UserBar title='Todos os usuários'>
+                        <div onClick={() => navigate('/users')}>
+                            <FiUsers size={30} />
+                        </div>
+                    </UserBar>
+                </Can>
                 <UserBar title='Meu usuário'>
                     <div onClick={() => navigate('/profile')}>
                         <FiUser size={30} />

@@ -66,6 +66,40 @@ export const DateText = styled.div`
     }
 `;
 
+export const OfferSelect = styled.div`
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   font-size: 48px;
+
+   strong {
+    margin: 0 16px;
+   }
+
+   svg{
+        cursor: pointer;
+        transition: 0.1s;
+
+        :hover{
+            color: ${props => props.theme.colors.secondary};
+        }
+   }
+
+   color: ${props => props.theme.colors.primary};
+
+   margin-bottom: 16px;
+`;
+
+export const OfferRegisterContent = styled.div`
+   p{
+    color: ${props => props.theme.colors.subTitle};
+    font-size: ${props => props.theme.sizes.subTitle};
+
+    margin-bottom: 16px;
+   }
+`;
+
 export const TrashContent = styled.div`
     display: flex;
     justify-content: end;

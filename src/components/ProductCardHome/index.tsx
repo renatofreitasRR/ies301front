@@ -10,6 +10,7 @@ import {
 
 import { AiFillHeart } from 'react-icons/ai'
 import { useNavigate } from "react-router-dom";
+import { Text } from "../../styles/text";
 
 
 interface ProductCardProps {
@@ -20,14 +21,25 @@ interface ProductCardProps {
     link: string;
     imgSrc: string;
     description: string;
+    quantity: number;
 }
 
 
-export function ProductCardHome({ id, title, date, description, price, link, imgSrc }: ProductCardProps) {
+export function ProductCardHome({ id, quantity, title, date, description, price, link, imgSrc }: ProductCardProps) {
     const navigate = useNavigate();
-    
+
+    function navigateToProduct() {
+        navigate(`/product/${id}`);
+    }
+
+    function registerOffer(e: any) {
+        e.stopPropagation();
+
+        console.log('Oi');
+    }
+
     return (
-        <Container onClick={() => navigate(`/product/${id}`)}>
+        <Container onClick={navigateToProduct}>
             <Photo>
                 <img src={imgSrc} />
             </Photo>
@@ -45,7 +57,7 @@ export function ProductCardHome({ id, title, date, description, price, link, img
                     </Description>
                 </div>
                 <TrashContent>
-                    <AiFillHeart size={35} />
+                    <strong>Quantidade disponível: {quantity}</strong>
                 </TrashContent>
             </Content>
         </Container>
