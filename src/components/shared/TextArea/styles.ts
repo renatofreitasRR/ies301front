@@ -17,6 +17,7 @@ export const TextAreaContainer = styled.textarea`
     color: ${props => props.theme.colors.text};
 
     padding-left: 16px;
+    padding-top: 16px;
 
 
     :focus{

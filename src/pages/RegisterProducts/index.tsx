@@ -125,12 +125,12 @@ export function RegisterProducts() {
                         Preencha todos os campos para completar o cadastro!
                     </SubTitle>
                     <InputContainer>
-                        <Input title='Nome' inputName='name' register={register} error={errors.name?.message} />
-                        <Input title='Preço' inputName='price' register={register} error={errors.price?.message} />
+                        <Input title='Nome' placeholder='Produto 01' inputName='name' register={register} error={errors.name?.message} />
+                        <Input title='Preço' placeholder='400,00' inputName='price' register={register} error={errors.price?.message} />
                     </InputContainer>
                     <InputContainer>
-                        <Input title='Imagem(URL)' inputName='imageUrl' register={register} error={errors.imageUrl?.message} />
-                        <Input title='Produto(URL)' inputName='productUrl' register={register} error={errors.productUrl?.message} />
+                        <Input title='Imagem(URL)' placeholder='www.google.com/imagem.png' inputName='imageUrl' register={register} error={errors.imageUrl?.message} />
+                        <Input title='Produto(URL)' placeholder='www.google.com/produto' inputName='productUrl' register={register} error={errors.productUrl?.message} />
                     </InputContainer>
                     <InputContainer>
                         <Input title='Quantidade' inputName='quantity' register={register} error={errors.quantity?.message} />
@@ -149,7 +149,7 @@ export function RegisterProducts() {
                             }
                         />
                     </InputContainer>
-                    <TextArea title='Descrição' inputName='description' register={register} error={errors.description?.message} rows={4} cols={4} />
+                    <TextArea title='Descrição' placeholder='Meu produto possui...' inputName='description' register={register} error={errors.description?.message} rows={4} cols={4} />
                     <Button title='Cadastrar' />
                 </CompanyRegister>
             </Form>

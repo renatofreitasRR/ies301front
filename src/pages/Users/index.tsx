@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { AiOutlineArrowLeft, AiOutlinePlus } from 'react-icons/ai';
 import { Link, useNavigate } from 'react-router-dom';
 import { ProductCard } from '../../components/ProductCard';
+import { DeleteModal } from '../../components/shared/DeleteModal';
 import { Loader } from '../../components/shared/Loader';
 import { UserCard } from '../../components/UserCard';
 import { ProductProps } from '../../models/productProps';
@@ -29,7 +30,7 @@ export function Users() {
                 const data = await response.data;
 
                 console.log('Data', data);
-        
+
                 if (response.status === 200) {
                     setUsers(response.data);
                 }

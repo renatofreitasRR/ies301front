@@ -261,12 +261,12 @@ export function Register() {
                                     Preencha todos os campos para continuar o cadastro!
                                 </SubTitle>
                                 <InputContainer>
-                                    <Input title='Nome' inputName='name' register={register} error={errors.name?.message} />
-                                    <Input title='Telefone' inputName='cellphone' register={register} error={errors.cellphone?.message} />
+                                    <Input title='Nome' placeholder='John Doe' inputName='name' register={register} error={errors.name?.message} />
+                                    <Input title='Telefone' placeholder='11 999999999' inputName='cellphone' register={register} error={errors.cellphone?.message} />
                                 </InputContainer>
                                 <InputContainer>
                                     <Input title='E-mail' inputName='email' register={register} error={errors.email?.message} />
-                                    <Input title='CPF' inputName='cpf' register={register} error={errors.cpf?.message} />
+                                    <Input title='CPF' inputName='cpf' placeholder='999.999.999-99' register={register} error={errors.cpf?.message} />
                                 </InputContainer>
                                 <InputContainer>
                                     <Input title='Senha' type='password' inputName='password' register={register} error={errors.password?.message} />
@@ -289,15 +289,15 @@ export function Register() {
                                     Preencha todos os campos para continuar o cadastro!
                                 </SubTitle>
                                 <InputContainer>
-                                    <Input title='Nome' inputName='name' register={registerCnpj} error={errorsCnpj.name?.message} />
-                                    <Input title='Telefone' inputName='cellphone' register={registerCnpj} error={errorsCnpj.cellphone?.message} />
+                                    <Input title='Nome' placeholder='Jhon Doe' inputName='name' register={registerCnpj} error={errorsCnpj.name?.message} />
+                                    <Input title='Telefone' placeholder='11 999999999' inputName='cellphone' register={registerCnpj} error={errorsCnpj.cellphone?.message} />
                                 </InputContainer>
                                 <InputContainer>
-                                    <Input title='E-mail' inputName='email' register={registerCnpj} error={errorsCnpj.email?.message} />
-                                    <Input title='CNPJ' inputName='cnpj' register={registerCnpj} error={errorsCnpj.cnpj?.message} />
+                                    <Input title='E-mail' placeholder='email@email.com' inputName='email' register={registerCnpj} error={errorsCnpj.email?.message} />
+                                    <Input title='CNPJ' placeholder='99.999.999/9999-99' inputName='cnpj' register={registerCnpj} error={errorsCnpj.cnpj?.message} />
                                 </InputContainer>
                                 <InputContainer>
-                                    <Input title='Nome da Empresa' inputName='companyName' register={registerCnpj} error={errorsCnpj.companyName?.message} />
+                                    <Input title='Nome da Empresa' placeholder='email@empresa.com' inputName='companyName' register={registerCnpj} error={errorsCnpj.companyName?.message} />
                                     {/* <Input title='Email Empresarial' inputName='userCompanyEmail' register={registerCnpj} error={errorsCnpj.userCompanyEmail?.message} /> */}
                                 </InputContainer>
                                 <InputContainer>

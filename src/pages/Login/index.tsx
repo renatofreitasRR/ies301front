@@ -77,7 +77,7 @@ export function Login() {
                             </SubTitle>
                         </div>
                         <div>
-                            <Input title='Email' register={register} inputName={'email'} error={errors.email?.message} />
+                            <Input title='Email' placeholder='email@email.com' register={register} inputName={'email'} error={errors.email?.message} />
                             <Input title='Senha' register={register} inputName={'password'} error={errors.password?.message} type='password' />
                             <Button title='Entrar' />
                             <RegisterContent>
