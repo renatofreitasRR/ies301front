@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { OfferCard } from '../../components/OfferCard';
 import { ProductCard } from '../../components/ProductCard';
+import { AuthContext } from '../../contexts/AuthContext';
 import { OfferProps } from '../../models/offerProps';
 import { ProductProps } from '../../models/productProps';
 import { api } from '../../services/api';
@@ -13,16 +15,20 @@ import {
     BackHome
 } from './styles';
 
-interface OfferProductProps extends OfferProps{
+interface OfferProductProps extends OfferProps {
     idProdutoNavigation: ProductProps;
 }
 
 export function Offers() {
+    const { user } = useContext(AuthContext);
+
     const [products, setProducts] = useState<OfferProductProps[]>([])
 
     useEffect(() => {
         async function getProducts() {
-            const response = await api.get(`reserva/minhasreservas`);
+            let route = user?.idTipoUsuario == 1 ? `reserva` : `reserva/minhasreservas`
+
+            const response = await api.get(route);
             const data = await response.data;
 
             console.log(data);
@@ -45,7 +51,11 @@ export function Offers() {
             <ListTitle>Lista de Ofertas</ListTitle>
             <ProductList>
                 {products.length > 0 ? products.map((product) => (
-                    <ProductCard
+                    <OfferCard
+                        products={products}
+                        setProducts={setProducts}
+                        idReserva={product.idReserva}
+                        id={product.idProdutoNavigation.idProduto}
                         key={product.idProdutoNavigation.idProduto}
                         date=''
                         imgSrc={product.idProdutoNavigation.imagemProduto}
@@ -54,7 +64,7 @@ export function Offers() {
                         title={product.idProdutoNavigation.nomeProduto}
                     />
                 )) : (
-                    <span>Não há produtos cadastrados</span>
+                    <span>Não há ofertas cadastradas</span>
                 )}
             </ProductList>
         </Container>

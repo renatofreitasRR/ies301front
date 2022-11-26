@@ -8,28 +8,28 @@ import {
 } from "./styles";
 
 import { FaTrash } from 'react-icons/fa'
-import { BsFillPencilFill } from 'react-icons/bs'
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useModal } from "../../hooks/useModal";
 import { api } from "../../services/api";
 import { DeleteModal } from "../shared/DeleteModal";
-import { useModal } from "../../hooks/useModal";
 import { Loader } from "../shared/Loader";
-import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
+    idReserva: number;
+    id: number;
     title: string;
     date: string;
     price: string;
     link: string;
     imgSrc: string;
-    id: number;
     products: any;
     setProducts: any;
 }
 
 
-export function ProductCard({ id, title, date, price, link, imgSrc, products, setProducts }: ProductCardProps) {
+export function OfferCard({ title, date, price, link, imgSrc, id, idReserva, products, setProducts }: ProductCardProps) {
     const [loading, setLoading] = useState(false);
     const { isVisible, handleOpenModal, handleCloseModal } = useModal();
 
@@ -47,35 +47,32 @@ export function ProductCard({ id, title, date, price, link, imgSrc, products, se
         setLoading(true);
         handleCloseModal();
         try {
-            const response = await api.delete(`produto/${id}`)
+            const response = await api.delete(`reserva/${idReserva}`)
 
             if (response.status == 204) {
                 removeFromList(id);
-                toast.success('Produto deletado com sucesso!');
+                toast.success('Oferta registrada deletada com sucesso!');
             }
 
         }
         catch (error: any) {
-            toast.error('Um erro ocorreu ao tentar deletar o produto');
+            toast.error('Um erro ocorreu ao tentar deletar a oferta registrada');
             toast.error(error.response.data);
         }
         finally {
-            setLoading(false);
+            setTimeout(() => {
+                setLoading(false);
+            }, 1000)
         }
 
     }
 
-    function handleEdit(e : any){
-        e.stopPropagation();
-
-        navigate(`/product/edit/${id}`);
-    }
-
-    function handleDelete(e : any){
+    function handleDelete(e: any) {
         e.stopPropagation();
 
         handleOpenModal();
     }
+
 
     return (
         <>
@@ -95,19 +92,19 @@ export function ProductCard({ id, title, date, price, link, imgSrc, products, se
                             R$ <strong>{price}</strong>
                         </span>
                     </div>
-                    <TrashContent >
-                        <BsFillPencilFill size={35} onClick={handleEdit} />
-                        <FaTrash size={35} onClick={handleDelete} />
+                    <TrashContent onClick={handleDelete}>
+                        <FaTrash size={35} />
                     </TrashContent>
                 </Content>
             </Container>
             {isVisible && <DeleteModal
                 action={async () => await handleDeleteProduct()}
                 isOpen={true}
-                text={'Tem certeza que deseja deletar este produto?'}
-                title={'Deletar produto'}
+                text={'Tem certeza que deseja deletar esta oferta?'}
+                title={'Deletar oferta'}
                 close={handleCloseModal}
             />}
         </>
+
     );
 }

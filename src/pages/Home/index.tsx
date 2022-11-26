@@ -10,22 +10,28 @@ import {
     ListTitle,
 } from './styles';
 
+const types = {
+    1: 'Eletrônicos',
+    2: 'Alimentos',
+    3: 'Vestuário'
+}
+
+
 
 export function Home() {
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState<ProductProps[]>([])
     let { type } = useParams();
 
+    let typeExists = type == undefined || type == null || type == '';
+
     useEffect(() => {
         async function getProducts() {
             setLoading(true);
             try {
-                let url = type == undefined || type == null || type == '' ? `/produto` : `/produto/tipos/${type}`;
+                let url = typeExists ? `/produto` : `/produto/tipos/${type}`;
                 const response = await api.get(url);
                 const data = await response.data;
-
-                console.log(data);
-
 
                 if (response.status === 200) {
                     setProducts(data);
@@ -49,7 +55,7 @@ export function Home() {
         <>
             {loading && <Loader />}
             <Container>
-                <ListTitle>Principais Ofertas</ListTitle>
+                <ListTitle>Principais Ofertas {type == undefined || type == null || type == ''  ? '' :  `em ${types[type]}`}</ListTitle>
                 <ProductList>
                     {products.length > 0 ? products.map((product) => (
                         <ProductCardHome

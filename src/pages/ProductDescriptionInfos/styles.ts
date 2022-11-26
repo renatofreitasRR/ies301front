@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.main`
-    width: 350px;
-    min-width: 350px;
-    height: 450px;
+    width: 100%;
+    height: 700px;
+    max-height: 70vh;
 
     background-color: ${props => props.theme.colors.white};
     border-radius: ${props => props.theme.sizes.borderRadius};
@@ -18,13 +18,14 @@ export const Container = styled.main`
 
 export const Photo = styled.div`
     background-color: ${props => props.theme.colors.secondary};
-    height: 192px;
+    height: 40%;
     border-radius: ${props => props.theme.sizes.borderRadius} ${props => props.theme.sizes.borderRadius} 48px 48px ;
 
     img{
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: scale-down;
+        object-position: center;
 
         border-radius: ${props => props.theme.sizes.borderRadius} ${props => props.theme.sizes.borderRadius} 48px 48px ;
     }
@@ -65,6 +66,40 @@ export const DateText = styled.div`
     }
 `;
 
+export const OfferSelect = styled.div`
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   font-size: 48px;
+
+   strong {
+    margin: 0 16px;
+   }
+
+   svg{
+        cursor: pointer;
+        transition: 0.1s;
+
+        :hover{
+            color: ${props => props.theme.colors.secondary};
+        }
+   }
+
+   color: ${props => props.theme.colors.primary};
+
+   margin-bottom: 16px;
+`;
+
+export const OfferRegisterContent = styled.div`
+   p{
+    color: ${props => props.theme.colors.subTitle};
+    font-size: ${props => props.theme.sizes.subTitle};
+
+    margin-bottom: 16px;
+   }
+`;
+
 export const TrashContent = styled.div`
     display: flex;
     justify-content: end;
@@ -78,6 +113,14 @@ export const TrashContent = styled.div`
     svg{
         color: ${props => props.theme.colors.secondary};
     }
+`;
+
+
+export const Description = styled.p`
+    margin-top: 12px;
+
+    color: ${props => props.theme.colors.text};
+    font-size: ${props => props.theme.sizes.text};
 `;
 
 

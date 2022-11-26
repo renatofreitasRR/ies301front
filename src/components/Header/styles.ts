@@ -23,9 +23,16 @@ export const IconBar = styled.div`
 export const SearchBar = styled.div`
     flex: 1;
     padding: 0 32px;
+
+    height: 100%;
+
     input{
         width: 100%;
     }
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 

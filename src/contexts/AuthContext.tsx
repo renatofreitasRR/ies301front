@@ -27,6 +27,8 @@ interface UserProps {
     telefone: string;
     email: string;
     idTipoUsuario: number;
+    pfisicas: any;
+    pjuridicas: any;
 }
 
 interface AuthState {
@@ -81,7 +83,8 @@ export function AuthProvider({ children }: AuthProps) {
             return 500;
         }
         catch (error: any) {
-            toast.error(`Ocorreu um erro ao tentar efetuar login, tente novamente mais tarde!!`);
+            console.log(error);
+            toast.error(error.response.data);
             return 500;
         }
     }

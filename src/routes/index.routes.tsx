@@ -9,6 +9,9 @@ import { Profile } from "../pages/Profile";
 import { Register } from "../pages/Register";
 import { RegisterProducts } from "../pages/RegisterProducts";
 import { Users } from "../pages/Users";
+import { EditProduct } from "../pages/EditProduct";
+import { ProductDescriptionInfos } from "../pages/ProductDescriptionInfos";
+import { ProductEditLoading } from "../components/ProductEditLoading";
 
 
 export function AppRoutes() {
@@ -25,6 +28,8 @@ export function AppRoutes() {
                     <Route path='/offers' element={<Offers />} />
                     <Route path='/products' element={<Products />} />
                     <Route path='/product/:id' element={<ProductDescription />} />
+                    <Route path='/product/info/:id' element={<ProductDescriptionInfos />} />
+                    <Route path='/product/edit/:id' element={<ProductEditLoading />} />
                     <Route path='/products/register' element={<RegisterProducts />} />
                 </Route>
             </Routes>

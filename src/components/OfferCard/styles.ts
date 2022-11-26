@@ -14,6 +14,14 @@ export const Container = styled.main`
     box-shadow: -1px 7px 21px 0px rgba(0,0,0,0.23);
 
     position: relative;
+
+    transition: 0.2s;
+
+    :hover{
+        transform: scale(1.01);
+    }
+
+    cursor: pointer;
 `;
 
 export const Photo = styled.div`

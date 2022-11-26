@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { AiOutlineArrowLeft, AiOutlinePlus } from 'react-icons/ai';
 import { Link, useNavigate } from 'react-router-dom';
 import { ProductCard } from '../../components/ProductCard';
 import { Loader } from '../../components/shared/Loader';
+import { AuthContext } from '../../contexts/AuthContext';
 import { ProductProps } from '../../models/productProps';
 import { api } from '../../services/api';
 import {
@@ -14,6 +15,7 @@ import {
 } from './styles';
 
 export function Products() {
+    const { user } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState<ProductProps[]>([])
 
@@ -23,7 +25,8 @@ export function Products() {
         async function getProducts() {
             setLoading(true);
             try {
-                const response = await api.get(`produto/meusprodutos`);
+                let route = user?.idTipoUsuario == 1 ? `produto` : `produto/meusprodutos`
+                const response = await api.get(route);
                 const data = await response.data;
 
                 if (response.status === 200) {
@@ -43,6 +46,8 @@ export function Products() {
         getProducts();
     }, [])
 
+   
+
     return (
         <>
             {loading && <Loader />}
@@ -57,12 +62,15 @@ export function Products() {
                 <ProductList>
                     {products.length > 0 ? products.map((product) => (
                         <ProductCard
+                            id={product.idProduto}
                             key={product.idProduto}
                             date=''
                             imgSrc={product.imagemProduto}
                             link={product.linkProduto}
                             price={product.preco.toString()}
                             title={product.nomeProduto}
+                            products={products}
+                            setProducts={setProducts}
                         />
                     )) : (
                         <span>Não há produtos cadastrados</span>
